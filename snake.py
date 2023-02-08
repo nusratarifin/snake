@@ -10,7 +10,8 @@ delay = 0.1
 # score
 score = 0
 high_score = 0
-food, fn_goto = food_mgt()
+
+fn_goto, fn_food_check = food_mgt()
 # screen
 wn = turtle.Screen()
 wn.title('Snake Game by Jui')
@@ -97,6 +98,8 @@ wn.onkeypress(go_right, 'd')
 
 
 
+
+
 # main game loop
 while True:
     wn.update()
@@ -122,7 +125,7 @@ while True:
         pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
 
     # collision with food
-    if head.distance(food) < 20:
+    if fn_food_check(head):
         # move the food random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)

@@ -13,4 +13,9 @@ def food_mgt():
     def fn_goto(x, y):
         food.goto(x, y)
 
-    return food, fn_goto
+    def fn_food_check(head):
+        if head.distance(food) < 20:
+            return True
+        return False
+
+    return fn_goto, fn_food_check
