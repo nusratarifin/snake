@@ -10,7 +10,7 @@ delay = 0.1
 # score
 score = 0
 high_score = 0
-food = food_mgt()
+food, fn_goto = food_mgt()
 # screen
 wn = turtle.Screen()
 wn.title('Snake Game by Jui')
@@ -93,6 +93,10 @@ wn.onkeypress(go_down, 's')
 wn.onkeypress(go_left, 'a')
 wn.onkeypress(go_right, 'd')
 
+
+
+
+
 # main game loop
 while True:
     wn.update()
@@ -122,7 +126,7 @@ while True:
         # move the food random spot
         x = random.randint(-290, 290)
         y = random.randint(-290, 290)
-        food.goto(x, y)
+        fn_goto(x, y)
 
         # add a segment
         new_segment = turtle.Turtle()

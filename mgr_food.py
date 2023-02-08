@@ -10,4 +10,7 @@ def food_mgt():
     food.penup()
     food.goto(0, 100)
 
-    return food
+    def fn_goto(x, y):
+        food.goto(x, y)
+
+    return food, fn_goto
