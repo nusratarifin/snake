@@ -4,6 +4,7 @@ import random
 from turtle import Turtle
 
 from mgr_food import food_mgt
+from mgr_pen import pen_mgt
 
 delay = 0.1
 
@@ -11,6 +12,8 @@ delay = 0.1
 score = 0
 high_score = 0
 
+
+fn_write_score = pen_mgt()
 fn_goto, fn_food_check = food_mgt()
 # screen
 wn = turtle.Screen()
@@ -40,14 +43,14 @@ head.direction = 'stop'
 segments = []
 
 # pen
-pen = turtle.Turtle()
-pen.speed(0)
-pen.shape('circle')
-pen.color('black')
-pen.penup()
-pen.hideturtle()
-pen.goto(0, 240)
-pen.write('Score:0, High Score:0', align='center', font=('Courier New', 24, 'normal'))
+# pen = turtle.Turtle()
+# pen.speed(0)
+# pen.shape('circle')
+# pen.color('black')
+# pen.penup()
+# pen.hideturtle()
+# pen.goto(0, 240)
+# pen.write('Score:0, High Score:0', align='center', font=('Courier New', 24, 'normal'))
 
 
 def go_up():
@@ -97,9 +100,6 @@ wn.onkeypress(go_right, 'd')
 
 
 
-
-
-
 # main game loop
 while True:
     wn.update()
@@ -121,8 +121,7 @@ while True:
 
         # reset the delay
         delay = 0.1
-        pen.clear()
-        pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
+        fn_write_score(score, high_score)
 
     # collision with food
     if fn_food_check(head):
@@ -147,8 +146,9 @@ while True:
 
         if score > high_score:
             high_score = score
-        pen.clear()
-        pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
+        # pen.clear()
+        # pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
+        fn_write_score(score, high_score)
 
     # move the end segments first to the reverse order
     for index in range(len(segments)-1, 0, -1):
@@ -185,9 +185,9 @@ while True:
             delay = 0.1
 
             # update the score display
-            pen.clear()
-            pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
-
+            # pen.clear()
+            # pen.write('Score: {} High Score {}'.format(score,high_score), align='center', font=('Courier New', 24, 'normal'))
+            fn_write_score(score, high_score)
     time.sleep(delay)
 
 wn.mainloop()
