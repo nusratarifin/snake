@@ -3,12 +3,14 @@ import time
 import random
 from turtle import Turtle
 
+from mgr_food import food_mgt
+
 delay = 0.1
 
 # score
 score = 0
 high_score = 0
-
+food = food_mgt()
 # screen
 wn = turtle.Screen()
 wn.title('Snake Game by Jui')
@@ -26,12 +28,12 @@ head.goto(0, 0)
 head.direction = 'stop'
 
 # food
-food = turtle.Turtle()
-food.speed(0)
-food.shape('square')
-food.color('orange')
-food.penup()
-food.goto(0, 100)
+# food = turtle.Turtle()
+# food.speed(0)
+# food.shape('square')
+# food.color('orange')
+# food.penup()
+# food.goto(0, 100)
 
 # body
 segments = []
